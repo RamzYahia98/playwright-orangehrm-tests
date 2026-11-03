@@ -42,23 +42,17 @@ class AdminPage{
 
    }
 
-   async employeeName(employeeName:string)
-   {
-     
-     
-     const employeeInput = this.page.getByPlaceholder('Type for hints...');
+ async employeeName(employeeName: string) {
+  const employeeInput = this.page.getByPlaceholder('Type for hints...');
 
-      await employeeInput.pressSequentially('Jo', { delay: 100 });
+  await employeeInput.pressSequentially(employeeName, { delay: 100 });
 
-      const options = this.page.getByRole('option');
-       await options.filter({hasText :employeeName}).waitFor();
+  const option = this.page.getByRole('option', { name: employeeName }).first();
+  await option.waitFor({ timeout: 10000 });
+  await option.click();
 
-      const name = await this.page.getByRole('option', { name: employeeName})
-      await name.click();
-
-
-     return employeeInput
-   }
+  return employeeInput;
+}
 
    async status(status:string)
    {
