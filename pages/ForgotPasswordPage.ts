@@ -22,7 +22,10 @@ class ForgotPasswordPage{
    }
    async clickOnResetPassword()
    {
-      await this.page.getByRole('button' , {name:' Reset Password '}).click();
+      //await this.page.getByRole('button' , {name:' Reset Password '}).click();
+      await this.page
+    .getByRole('button', { name: 'Reset Password' })
+    .click({ noWaitAfter: true });
    }
   
    async fillUserName(username:string){

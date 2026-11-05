@@ -36,7 +36,7 @@ test.describe('Login Tests', () => {
 
     ForgotPasswordPage1(page).clickOnForgotYourPassword();
     await expect(page).toHaveURL(/requestPasswordResetCode/)
-
+    
     await expect(page.locator('.orangehrm-forgot-password-wrapper')).toBeVisible()
     //click on cancel button 
 
@@ -53,6 +53,7 @@ test.describe('Login Tests', () => {
     //valid username and click on reset password
     await ForgotPasswordPage1(page).fillUserName(validUser.Username)
     await ForgotPasswordPage1(page).clickOnResetPassword()
+    await expect(page).toHaveURL(/sendPasswordReset/, { timeout: 30_000 });
 
   })
 

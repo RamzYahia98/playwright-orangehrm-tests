@@ -39,7 +39,6 @@ retries: process.env.CI ? 1 : 0,
       navigationTimeout: 45_000,
       trace: 'retain-on-failure',
       screenshot: 'only-on-failure',
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
    // trace: 'on-first-retry',
   },
